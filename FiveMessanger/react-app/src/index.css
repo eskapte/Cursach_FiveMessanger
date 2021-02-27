@@ -1,0 +1,67 @@
+body {
+  font-family: Roboto;
+  background-color: #E5E5E5;
+}
+
+#root {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* AuthForm */
+.auth-modal {
+  margin: 25% auto;
+  width: 40%;
+  background-color: white;
+}
+
+.authform-header {
+  background-color: #00334E;
+  color: white;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authform-header h2 {
+  font-weight: 400;
+  margin: 0;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem 2rem 2rem;
+}
+
+.auth-form span {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #00334E;
+}
+
+.auth-form input {
+  border: 1px solid #00334E;
+  outline-color: #1778AA;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+.auth-form label:first-child {
+  margin-top: 1rem;
+}
+
+.auth-form input[type='button'] {
+  padding: 0.5rem;
+  color: white;
+  background-color: #00334E;
+  width: 62%;
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 350;
+}
