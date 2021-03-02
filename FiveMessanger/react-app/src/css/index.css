@@ -1,0 +1,11 @@
+body {
+  font-family: Roboto;
+  background-color: #F6F5F5;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+#root {
+  width: 1200px;
+  margin: 0 auto;
+}

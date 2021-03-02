@@ -1,0 +1,60 @@
+header.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+}
+
+header.main-header span {
+    font-size: 24px;
+}
+
+header.main-header h1 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 75px;
+    margin: 0;
+}
+
+.main-header a {
+    font-size: 20px;
+    color: #00334E;
+}
+
+nav.main-nav {
+    background-color: #00334E;
+
+    height: 60px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+}
+
+nav.main-nav a {
+    color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 28px;
+    font-size: 20px;
+    padding: 1.2rem;
+}
+
+nav.main-nav a:hover {
+    background-color: #145374;
+}
+
+.active-link {
+    background-color: #145374;
+}

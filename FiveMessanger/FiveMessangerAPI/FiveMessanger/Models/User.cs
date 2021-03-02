@@ -24,6 +24,11 @@ namespace FiveMessanger.Models
         public Roles Role { get; set; }
         public Profile Profile { get; set; }
         public DateTime Created { get; set; }
-        public ICollection<Chat> Chats { get; set; }
+        public virtual ICollection<Chat> Chats { get; set; }
+
+        public User()
+        {
+            Chats = new List<Chat>();
+        }
     }
 }

@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FiveMessanger.Hubs;
 
 namespace FiveMessanger
 {
@@ -30,6 +31,8 @@ namespace FiveMessanger
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
+
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
@@ -66,6 +69,19 @@ namespace FiveMessanger
                     });
 
             services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "reactPolicy",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    }
+                    );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,9 +92,11 @@ namespace FiveMessanger
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("reactPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -86,6 +104,7 @@ namespace FiveMessanger
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/hubs/chat");
             });
         }
     }

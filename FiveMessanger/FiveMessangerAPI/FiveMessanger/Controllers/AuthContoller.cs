@@ -9,9 +9,13 @@ using Microsoft.EntityFrameworkCore;
 using FiveMessanger.Models;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FiveMessanger.Controllers
 {
+    [EnableCors("reactPolicy")]
+    [ApiController]
     public class AuthContoller : ControllerBase
     {
         private readonly FiveMessangerContext _context;
@@ -84,7 +88,7 @@ namespace FiveMessanger.Controllers
             if (username == null || password == null)
                 return null;
 
-            User user = await _context.Users.SingleAsync(u => u.Username == username);
+            User user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
             if (user == null || !(BCrypt.CheckPassword(password, user.Password)))
                 return null;
             var claims = new List<Claim>

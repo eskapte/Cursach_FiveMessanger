@@ -12,8 +12,14 @@ namespace FiveMessanger.Models
         public string? Content { get; set; }
         public Chat Chat { get; set; }
         public int ChatId { get; set; }
-        public ICollection<File> Files { get; set; }
+        public virtual ICollection<File> Files { get; set; }
         public DateTime Created { get; set; }
-        public ICollection<User> Readed;
+        public virtual ICollection<User> Readed { get; set; }
+
+        public Message()
+        {
+            Files = new List<File>();
+            Readed = new List<User>();
+        }
     }
 }
